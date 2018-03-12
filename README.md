@@ -15,5 +15,5 @@ $ yarn dev or npm run dev
 ## Vue CDN
 แบบที่ 2 ถ้าใช้ vue cdn 
 ```
-ที่ folder 02.html ถ้าใช้ vs code ให้ติดตั้ง extension ชื่อ live server แล้ว start file index.html ดูครับ
+ที่ folder 02.vue-cdn ถ้าใช้ vs code ให้ติดตั้ง extension ชื่อ live server แล้ว start file index.html ดูครับ
 ```
