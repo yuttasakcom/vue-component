@@ -1,4 +1,4 @@
-# Vue Components
+# Vue Dynamic Components Example
 
 ## Table of Conents
 * [Vue Cli](#vue-cli)
