@@ -1,39 +1,30 @@
 const tabsTemplate = `
-    <div class="container mt-5">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a :class='{"nav-link":true, active: componentAactive}' href="" @click.prevent="selected('component-a')">Component A</a>
-            </li>
-            <li class="nav-item">
-                <a :class='{"nav-link":true, active: componentBactive}' href="" @click.prevent="selected('component-b')">Component B</a>
-            </li>
-        </ul>
-        <div class="container mt-2">
-            <component-a v-if="componentAactive" />
-            <component-b v-if="componentBactive" />
-        </div>
-    </div>
+  <div class="container mt-5">
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a :class='{"nav-link":true, active: isActiveComponentA}' href="" @click.prevent="selectedComponent = 'ComponentA'">Component A</a></li>
+        <li class="nav-item"><a :class='{"nav-link":true, active: isActiveComponentB}' href="" @click.prevent="selectedComponent = 'ComponentB'">Component B</a></li>
+    </ul>
+    <component :is="selectedComponent" class="container mt-3"></component>
+  </div>
 `
 
 Vue.component('tabs', {
   template: tabsTemplate,
   data: () => ({
-    componentAactive: true,
-    componentBactive: false
+    selectedComponent: 'ComponentA',
+    isActiveComponentA: true,
+    isActiveComponentB: false
   }),
-  methods: {
-    selected (componentName) {
-      switch (componentName) {
-        case 'component-a':
-          this.componentAactive = true
-          this.componentBactive = false
-          break
-        case 'component-b':
-          this.componentAactive = false
-          this.componentBactive = true
-          break
-        default:
-          break
+  watch: {
+    selectedComponent (component) {
+      if (component === 'ComponentA') {
+        this.isActiveComponentA = true
+        this.isActiveComponentB = false
+      }
+
+      if (component === 'ComponentB') {
+        this.isActiveComponentA = false
+        this.isActiveComponentB = true
       }
     }
   }
